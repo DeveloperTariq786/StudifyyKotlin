@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "952571239328",
+    "firebase_url": "https://studifyy-a6d14-default-rtdb.firebaseio.com",
+    "project_id": "studifyy-a6d14",
+    "storage_bucket": "studifyy-a6d14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952571239328:android:2557abee2e7fe2fe4222c5",
+        "android_client_info": {
+          "package_name": "com.example.studifyy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952571239328-cpihnmgcro1r8jcr3uek7jcdu5tag16c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.studifyy",
+            "certificate_hash": "5ebe446b974b216c0dc3e2acafecce444fd76993"
+          }
+        },
+        {
+          "client_id": "952571239328-orfqr0pqhb9ar4rp54d8nhunlj8kd4k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwq4adizgGdEcaCun8wzMudWnPRVYvvV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952571239328-orfqr0pqhb9ar4rp54d8nhunlj8kd4k2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
