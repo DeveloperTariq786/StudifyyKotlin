@@ -19,10 +19,10 @@ class CoursesRecyclerViewAdapter(private var list:ArrayList<CoursesModel>,privat
         holder.binding.CourseTitle.text= list[position].CT
         holder.binding.CourseCode.text= list[position].CC
         val currentItem=list[position]
-        holder.itemView.setOnClickListener {
+       /* holder.itemView.setOnClickListener {
             val bottomSheetFragment=BottomSheetBMPFragment()
             bottomSheetFragment.show((context as AppCompatActivity).supportFragmentManager,bottomSheetFragment.tag)
-        }
+        }*/
     }
     inner class ViewHolder(var binding :AllcourcesrecyclerviewlayoutBinding): RecyclerView.ViewHolder(binding.root)
 

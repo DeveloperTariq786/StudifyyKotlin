@@ -1,12 +1,8 @@
 package com.example.studifyy
-
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.renderscript.ScriptGroup.Binding
-import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.studifyy.databinding.ActivityCourcesBtechBinding
-
 class BTechCourcesActivity: AppCompatActivity() {
     private lateinit var binding:ActivityCourcesBtechBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,8 +11,8 @@ class BTechCourcesActivity: AppCompatActivity() {
         val view=binding.root
         setContentView(view)
         binding.AllCourseRecyclerview.layoutManager=LinearLayoutManager(this)
-        val data=BTechCoursesDetailDataFile.items
-        val adapter=CoursesRecyclerViewAdapter(data as ArrayList<CoursesModel>,this)
+        val data=BTechCoursesDetailDataFile.getData()
+        val adapter=CoursesRecyclerViewAdapter(data,this)
         binding.AllCourseRecyclerview.adapter=adapter
     }
 
