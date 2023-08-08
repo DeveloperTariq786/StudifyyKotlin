@@ -5,54 +5,64 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.studifyy.databinding.FragmentPapersBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
-// TODO: Rename parameter arguments, choose names that match
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PapersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PapersFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    private lateinit var binding: FragmentPapersBinding
+    private var db = FirebaseFirestore.getInstance()
+    private var adapter = AllMaterialAdapter()
+    private lateinit var selectedProgram: String
+    private lateinit var documentId: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        selectedProgram = arguments?.getString("selectedProgram") ?: ""
+        documentId = arguments?.getString("documentId") ?: ""
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_papers, container, false)
+    ): View {
+        binding = FragmentPapersBinding.inflate(inflater, container, false)
+        binding.PapersMaterialRecyclerView.layoutManager= GridLayoutManager(context,2)
+        adapter=AllMaterialAdapter()
+        binding.PapersMaterialRecyclerView.adapter=adapter
+        fetchData()
+        binding.DrawerMenu.setOnClickListener {
+            val bottomSheet=BottomSheetCoursesFragment()
+            bottomSheet.show(parentFragmentManager,bottomSheet.tag)
+        }
+        return binding.root
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PapersFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PapersFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        fun newInstance(selectedProgram: String, documentId: String): PapersFragment {
+            val args = Bundle().apply {
+                putString("selectedProgram", selectedProgram)
+                putString("documentId", documentId)
+            }
+            val fragment = PapersFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
+    private fun fetchData(){
+        val proRef=db.collection("Programs").document(selectedProgram)
+        val coursesRef=proRef.collection("Courses").document(documentId)
+        coursesRef.collection("Papers")
+            .get().addOnSuccessListener {query->
+                val noteList= mutableListOf<MaterialModel>()
+                for (document in query){
+                    val notesName=document.getString("TopicName")?:""
+                    val url=document.getString("Url")?:""
+                    noteList.add(MaterialModel(notesName,url))
                 }
+                adapter.setCourses(noteList)
+            }
+            .addOnFailureListener {
+
             }
     }
 }

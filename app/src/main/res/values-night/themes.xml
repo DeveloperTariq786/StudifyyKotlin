@@ -3,5 +3,13 @@
     <style name="Base.Theme.Studifyy" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">#DDDDDA</item>
+        <item name="colorPrimaryDark">#0a2152</item>
+        <item name="colorAccent">#0a2152</item>
+    </style>
+    <style name="NewTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#DDDDDA</item>
+        <item name="colorPrimaryDark">#0a2152</item>
+        <item name="colorAccent">#0a2152</item>
     </style>
 </resources>

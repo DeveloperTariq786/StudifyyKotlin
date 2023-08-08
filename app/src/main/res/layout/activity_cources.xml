@@ -5,32 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient1"
-    tools:context=".BTechCourcesActivity"
+    android:background="#0a2152"
+    tools:context=".CoursesActivity"
     android:orientation="vertical">
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="vertical"
        android:background="@drawable/top_round_layout">
-       <ImageView
-           android:id="@+id/profile"
-           android:layout_marginStart="16dp"
-           android:layout_marginTop="8dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:padding="4dp"
-           android:src="@drawable/baseline_sort_24">
-       </ImageView>
-       <TextView
-           android:layout_marginTop="8dp"
-           android:gravity="center_horizontal"
+       <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="@string/app_name"
-           android:textColor="@color/white"
-           android:textSize="20sp">
-       </TextView>
+           android:orientation="horizontal"
+           android:layout_marginTop="16dp"
+           android:layout_marginStart="8dp"
+           android:layout_marginEnd="8dp">
+           <ImageView
+               android:id="@+id/profile"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:padding="20dp"
+               android:scaleType="centerCrop"
+               android:src="@drawable/baseline_sort_24" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center_horizontal"
+               android:layout_marginEnd="25dp"
+               android:text="@string/app_name"
+               android:textColor="#fedc5e"
+               android:textSize="46sp"
+               android:textStyle="bold|italic" />
+       </LinearLayout>
        <SearchView
            android:id="@+id/search_bar"
          android:background="@drawable/searchbg"
@@ -38,9 +45,9 @@
            android:layout_marginStart="20dp"
            android:layout_marginEnd="20dp"
            android:layout_marginTop="8dp"
-           android:queryHint="Search Course Title or Code"
+           android:queryHint="Search Course Title or Code..."
            android:layout_width="match_parent"
-           android:layout_height="35dp">
+           android:layout_height="38dp">
        </SearchView>
    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
@@ -49,23 +56,8 @@
         android:layout_width="match_parent"
         tools:listitem="@layout/allcourcesrecyclerviewlayout"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
+        app:spanCount="2"
         android:orientation="vertical"
         android:layout_height="wrap_content">
-    </androidx.recyclerview.widget.RecyclerView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Most used"
-        android:textColor="@color/white"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="20sp">
-    </TextView>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/MostUsedCourseRecyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

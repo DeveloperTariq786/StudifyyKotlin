@@ -5,21 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistrationActivity"
+    android:background="#0a2152"
     android:orientation="vertical">
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_sort_24"
-        android:background="@drawable/profile"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:src="@drawable/logo"
+        android:scaleType="centerCrop"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:padding="30dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Let's Enter The Race of Legends "
+        android:text="Let's Enter The Race of Toppers "
         android:textSize="16sp"
         android:padding="4dp"
+        android:textColor="#fedc5e"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:gravity="center_horizontal">
@@ -29,6 +31,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:padding="8dp"
+        android:textColor="#fedc5e"
         android:text="Login/SignUp"
         android:textSize="20sp"
         android:textStyle="italic" />
@@ -38,12 +41,13 @@
         android:orientation="vertical"
         android:layout_marginTop="16dp"
         android:background="@drawable/signupshape">
-
         <EditText
             android:id="@+id/PhoneNumber"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
+            android:textColorHint="#fedc5e"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
@@ -56,18 +60,20 @@
 
         <Button
             android:id="@+id/OTP"
-            android:backgroundTint="#02AC9C"
+           android:backgroundTint="#0a2152"
+            android:textColor="#fedc5e"
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
             android:layout_height="wrap_content"
             android:text="OPT" />
-
         <EditText
             android:id="@+id/OTPPassword"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
+            android:textColorHint="#fedc5e"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:ems="10"
@@ -76,29 +82,36 @@
             android:paddingStart="4dp"
             tools:ignore="TouchTargetSizeCheck" />
         <Button
-            android:backgroundTint="#02AC9C"
+            android:backgroundTint="#0a2152"
             android:id="@+id/Submit"
+            android:textColor="#fedc5e"
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:text="Submit" />
-
         <Spinner
+            android:id="@+id/ProgramsSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:background="#0a2152"
+            android:visibility="visible"
+            android:spinnerMode="dropdown"
             android:layout_marginTop="20dp"
+            android:animateLayoutChanges="true"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            tools:ignore="TouchTargetSizeCheck"
-            android:minHeight="48dp"/>
-
-        <Spinner
-            android:layout_width="match_parent"
+            android:minHeight="48dp"
+            tools:ignore="TouchTargetSizeCheck" />
+        <Button
+            android:id="@+id/LetsGo"
+            android:backgroundTint="#0a2152"
+            android:textColor="#fedc5e"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:minHeight="48dp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="Let's Go" />
     </LinearLayout>
 </LinearLayout>

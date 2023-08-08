@@ -1,3 +1,3 @@
 package com.example.studifyy
 
-data class CoursesModel( val CT:String, val CC:String)
+data class CoursesModel(val CT:String, val CC:String,val documentId:String)
