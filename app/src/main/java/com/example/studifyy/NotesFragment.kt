@@ -3,6 +3,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.studifyy.databinding.FragmentNotesBinding
@@ -14,6 +15,9 @@ class NotesFragment : Fragment() {
     private var adapter=AllMaterialAdapter()
     private lateinit var selectedProgram:String
     private lateinit var documentId: String
+    private val noteList= mutableListOf<MaterialModel>()
+    private var originalItemList: List<MaterialModel> = emptyList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         selectedProgram= arguments?.getString("selectedProgram") ?:""
@@ -33,6 +37,25 @@ class NotesFragment : Fragment() {
             val bottomSheet=BottomSheetCoursesFragment()
             bottomSheet.show(parentFragmentManager,bottomSheet.tag)
         }
+        binding.NotesSearch.setOnQueryTextListener(object :android.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+               return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    if (it.isEmpty()) {
+
+                        adapter.setCourses(originalItemList)
+                    } else {
+                        val filteredItems = originalItemList.filter { item -> item.TopicName .contains(it, ignoreCase = true)}
+                        adapter.setCourses(filteredItems)
+                    }
+                }
+                return true
+            }
+
+        })
         return binding.root
     }
     companion object{
@@ -51,12 +74,12 @@ class NotesFragment : Fragment() {
         val coursesRef=proRef.collection("Courses").document(documentId)
         coursesRef.collection("Notes")
             .get().addOnSuccessListener {query->
-                val noteList= mutableListOf<MaterialModel>()
                 for (document in query){
                     val notesName=document.getString("TopicName")?:""
                      val url=document.getString("Url")?:""
                     noteList.add(MaterialModel(notesName,url))
                 }
+                originalItemList = noteList.toList()
                 adapter.setCourses(noteList)
             }
             .addOnFailureListener {

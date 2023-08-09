@@ -31,7 +31,6 @@ class CoursesRecyclerViewAdapter(private val itemClickListener: (CoursesModel)->
         list = courses
         notifyDataSetChanged()
     }
-
     inner class ViewHolder(private var binding: AllcourcesrecyclerviewlayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: CoursesModel) {
@@ -41,6 +40,7 @@ class CoursesRecyclerViewAdapter(private val itemClickListener: (CoursesModel)->
                 itemClickListener(data)
             }
         }
+
     }
 }
 
