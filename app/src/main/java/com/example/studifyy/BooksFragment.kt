@@ -13,6 +13,8 @@ class BooksFragment : Fragment() {
     private var adapter = AllMaterialAdapter()
     private lateinit var selectedProgram: String
     private lateinit var documentId: String
+    private var originalItemList: List<MaterialModel> = emptyList()
+    val bookList = mutableListOf<MaterialModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         selectedProgram = arguments?.getString("selectedProgram") ?: ""
@@ -31,6 +33,23 @@ class BooksFragment : Fragment() {
             val bottomSheet = BottomSheetCoursesFragment()
             bottomSheet.show(parentFragmentManager, bottomSheet.tag)
         }
+        binding.BooksSearch.setOnQueryTextListener(object :android.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    if (it.isEmpty()) {
+
+                        adapter.setCourses(originalItemList)
+                    } else {
+                        val filteredItems = originalItemList.filter { item -> item.TopicName .contains(it, ignoreCase = true)}
+                        adapter.setCourses(filteredItems)
+                    }
+                }
+                return true
+            }
+        })
         return binding.root
     }
 
@@ -45,19 +64,18 @@ class BooksFragment : Fragment() {
             return fragment
         }
     }
-
     private fun fetchData() {
         val proRef = db.collection("Programs").document(selectedProgram)
         val coursesRef = proRef.collection("Courses").document(documentId)
         coursesRef.collection("Books")
             .get().addOnSuccessListener { query ->
-                val noteList = mutableListOf<MaterialModel>()
                 for (document in query) {
                     val notesName = document.getString("TopicName") ?: ""
                     val url = document.getString("Url") ?: ""
-                    noteList.add(MaterialModel(notesName, url))
+                    bookList.add(MaterialModel(notesName, url))
                 }
-                adapter.setCourses(noteList)
+                originalItemList = bookList.toList()
+                adapter.setCourses(bookList)
             }
             .addOnFailureListener {
 

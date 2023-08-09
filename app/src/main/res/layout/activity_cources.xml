@@ -34,26 +34,21 @@
                android:gravity="center_horizontal"
                android:layout_marginEnd="25dp"
                android:text="@string/app_name"
-               android:textColor="@color/golden2"
+               android:textColor="#fedc5e"
                android:textSize="46sp"
                android:textStyle="bold|italic" />
        </LinearLayout>
-       <androidx.cardview.widget.CardView
-           android:layout_width="match_parent"
-           android:layout_height="38dp"
+       <SearchView
+           android:id="@+id/search_bar"
+         android:background="@drawable/searchbg"
            android:layout_marginBottom="8dp"
            android:layout_marginStart="20dp"
            android:layout_marginEnd="20dp"
            android:layout_marginTop="8dp"
-           app:cardCornerRadius="10dp">
-           <SearchView
-               android:id="@+id/search_bar"
-               android:background="@color/golden2"
-               android:queryHint="Search Course Title or Code..."
-               android:layout_width="match_parent"
-               android:layout_height="38dp">
-           </SearchView>
-       </androidx.cardview.widget.CardView>
+           android:queryHint="Search Course Title or Code..."
+           android:layout_width="match_parent"
+           android:layout_height="38dp">
+       </SearchView>
    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/AllCourseRecyclerview"

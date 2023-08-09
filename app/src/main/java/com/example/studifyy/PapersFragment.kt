@@ -14,7 +14,9 @@ class PapersFragment : Fragment() {
     private var db = FirebaseFirestore.getInstance()
     private var adapter = AllMaterialAdapter()
     private lateinit var selectedProgram: String
+    private val papersList= mutableListOf<MaterialModel>()
     private lateinit var documentId: String
+    private var originalItemList: List<MaterialModel> = emptyList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         selectedProgram = arguments?.getString("selectedProgram") ?: ""
@@ -34,6 +36,25 @@ class PapersFragment : Fragment() {
             val bottomSheet=BottomSheetCoursesFragment()
             bottomSheet.show(parentFragmentManager,bottomSheet.tag)
         }
+        binding.PapersSearch.setOnQueryTextListener(object :android.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    if (it.isEmpty()) {
+
+                        adapter.setCourses(originalItemList)
+                    } else {
+                        val filteredItems = originalItemList.filter { item -> item.TopicName .contains(it, ignoreCase = true)}
+                        adapter.setCourses(filteredItems)
+                    }
+                }
+                return true
+            }
+
+        })
         return binding.root
     }
 
@@ -53,13 +74,14 @@ class PapersFragment : Fragment() {
         val coursesRef=proRef.collection("Courses").document(documentId)
         coursesRef.collection("Papers")
             .get().addOnSuccessListener {query->
-                val noteList= mutableListOf<MaterialModel>()
+
                 for (document in query){
                     val notesName=document.getString("TopicName")?:""
                     val url=document.getString("Url")?:""
-                    noteList.add(MaterialModel(notesName,url))
+                    papersList.add(MaterialModel(notesName,url))
                 }
-                adapter.setCourses(noteList)
+                originalItemList = papersList.toList()
+                adapter.setCourses(papersList)
             }
             .addOnFailureListener {
 
