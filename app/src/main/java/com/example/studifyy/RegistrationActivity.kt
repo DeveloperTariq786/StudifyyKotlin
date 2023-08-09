@@ -1,4 +1,5 @@
 package com.example.studifyy
+import CustomAdapter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import com.example.studifyy.databinding.ActivityRegistrationBinding
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +23,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var verificationId:String
     private  val fireStore=FirebaseFirestore.getInstance()
+    private val programList= mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityRegistrationBinding.inflate(layoutInflater)
@@ -55,6 +58,7 @@ class RegistrationActivity : AppCompatActivity() {
         binding.ProgramsSpinner.onItemSelectedListener=object :AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val selectedProgram= p0?.getItemAtPosition(p2).toString()
+                binding.ProgramsSpinner.setPopupBackgroundResource(R.color.blue)
                 offlineData(selectedProgram)
                 openActivity(selectedProgram)
 
@@ -69,7 +73,6 @@ class RegistrationActivity : AppCompatActivity() {
         val programRef=fireStore.collection("Programs")
         programRef.get()
             .addOnSuccessListener {documents->
-                val programList= mutableListOf<String>()
                 for (document in documents){
                     val programsNames=document.id
                     programList.add(programsNames)

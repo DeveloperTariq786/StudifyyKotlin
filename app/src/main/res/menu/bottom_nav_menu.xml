@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:id="@+id/Notes"
-    android:icon="@drawable/baseline_sort_24"
+    android:icon="@drawable/baseline_book_24"
     android:title="Notes">
 </item>
     <item android:id="@+id/Books"
-        android:icon="@drawable/baseline_sort_24"
+        android:icon="@drawable/baseline_book_24"
     android:title="Books">
 </item>
     <item android:id="@+id/Papers"
-        android:icon="@drawable/baseline_sort_24"
+        android:icon="@drawable/baseline_book_24"
     android:title="Papers">
 </item>
 </menu>

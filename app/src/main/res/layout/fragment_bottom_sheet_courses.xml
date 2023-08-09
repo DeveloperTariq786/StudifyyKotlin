@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0a2152"
-    tools:context=".BottomSheetCoursesFragment"
+    android:layout_height="wrap_content"
+    android:background="@color/blue"
     android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher_foreground"
-        android:scaleType="centerCrop"
-        android:layout_margin="16dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+       android:gravity="center_horizontal"
         android:layout_marginBottom="16dp">
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_sort_24"
-            android:layout_marginEnd="16dp"
+            android:textColor="#fedc5e"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:text="Program Enrolled :"
+            android:layout_marginEnd="0dp"
             android:padding="4dp" />
         <TextView
             android:id="@+id/DataProgramSaved"
             android:textColor="#fedc5e"
-            style="@android:style/Widget.Material.TextView.SpinnerItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
@@ -36,14 +30,17 @@
             android:textSize="20sp"
             android:textStyle="bold|italic" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp">
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_sort_24"
+            android:src="@drawable/baseline_save_24"
             android:layout_marginEnd="16dp"
             android:padding="4dp" />
 
@@ -53,19 +50,87 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:textColor="#fedc5e"
-            android:text="Saved"
+            android:text="Saved Courses"
             android:textSize="20sp"
             android:textStyle="bold|italic" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp">
+        android:layout_marginBottom="16dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_sort_24"
+            android:src="@drawable/baseline_save_as_24"
+            android:layout_marginEnd="16dp"
+            android:padding="4dp" />
+
+        <TextView
+            style="@android:style/Widget.Material.TextView.SpinnerItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="#fedc5e"
+            android:text="Saved Books"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+    </LinearLayout><LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_save_24"
+            android:layout_marginEnd="16dp"
+            android:padding="4dp" />
+
+        <TextView
+            style="@android:style/Widget.Material.TextView.SpinnerItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="#fedc5e"
+            android:text="Saved Notes"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+    </LinearLayout><LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_save_as_24"
+            android:layout_marginEnd="16dp"
+            android:padding="4dp" />
+
+        <TextView
+            style="@android:style/Widget.Material.TextView.SpinnerItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="#fedc5e"
+            android:text="Saved Papers"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_share_24"
             android:layout_marginEnd="16dp"
             android:padding="4dp" />
 
@@ -82,12 +147,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp">
+        android:layout_marginBottom="16dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_sort_24"
+            android:src="@drawable/baseline_saved_search_24"
             android:layout_marginEnd="16dp"
             android:padding="4dp" />
         <TextView
@@ -97,6 +163,27 @@
             android:padding="4dp"
             android:textColor="#fedc5e"
             android:text="About"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+    </LinearLayout><LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_lock_24"
+            android:layout_marginEnd="16dp"
+            android:padding="4dp" />
+        <TextView
+            style="@android:style/Widget.Material.TextView.SpinnerItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="#fedc5e"
+            android:text="Logout"
             android:textSize="20sp"
             android:textStyle="bold|italic" />
     </LinearLayout>
