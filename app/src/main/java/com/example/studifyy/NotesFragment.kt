@@ -3,21 +3,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.studifyy.databinding.FragmentNotesBinding
 import com.google.firebase.firestore.FirebaseFirestore
-
 class NotesFragment : Fragment() {
     private  lateinit var binding:FragmentNotesBinding
     private var db=FirebaseFirestore.getInstance()
     private var adapter=AllMaterialAdapter()
     private lateinit var selectedProgram:String
-    private lateinit var documentId: String
+    private lateinit var documentId:String
     private val noteList= mutableListOf<MaterialModel>()
     private var originalItemList: List<MaterialModel> = emptyList()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         selectedProgram= arguments?.getString("selectedProgram") ?:""
@@ -58,6 +55,8 @@ class NotesFragment : Fragment() {
         })
         return binding.root
     }
+
+
     companion object{
         fun newInstance(selectedProgram:String,documentId:String):NotesFragment{
             val args=Bundle().apply {

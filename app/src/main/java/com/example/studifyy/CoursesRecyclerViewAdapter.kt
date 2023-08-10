@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studifyy.databinding.AllcourcesrecyclerviewlayoutBinding
 
@@ -34,10 +35,17 @@ class CoursesRecyclerViewAdapter(private val itemClickListener: (CoursesModel)->
     inner class ViewHolder(private var binding: AllcourcesrecyclerviewlayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: CoursesModel) {
+            val isConnected= isOnline(itemView.context)
             binding.CourseCode.text = data.CC
             binding.CourseTitle.text = data.CT
             itemView.setOnClickListener {
-                itemClickListener(data)
+               if (isConnected){
+                   itemClickListener(data)
+               }
+                else{
+                    val massage= "Please Check Internet Connection!!!"
+                   Toast.makeText(itemView.context,massage, Toast.LENGTH_LONG).show()
+               }
             }
         }
 
