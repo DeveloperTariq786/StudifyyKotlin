@@ -6,9 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Material")
 data class SavedData(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo
+    @PrimaryKey(autoGenerate = true)
+    val id:Int,
     val TopicName: String,
-    @ColumnInfo
     val url: String
 )

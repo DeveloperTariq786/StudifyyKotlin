@@ -50,7 +50,7 @@ class AllMaterialAdapter : RecyclerView.Adapter<AllMaterialAdapter.ViewHolder>()
                 val database=SavedDataBase.getDatabase(itemView.context)
                 val download=database.savedDaoClass()
                 GlobalScope.launch(Dispatchers.IO){
-                    download.insert(SavedData(id,data.TopicName,data.TopicName))
+                    download.insert(SavedData(id,data.TopicName,data.Url))
                 }
 
             }

@@ -2,6 +2,7 @@ package com.example.studifyy
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.studifyy.databinding.ActivitySavedBinding
 
@@ -14,13 +15,13 @@ class SavedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySavedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModelClass= ViewModelProvider(this)[viewModelClass::class.java]
+        viewModelClass= ViewModelProvider(this).get(ViewModelClass::class.java)
         viewModelClass.roomLiveData.observe(this) { item ->
             adapter.update(item)
         }
        adapter= SavedDataAdapter(emptyList())
         binding.SavedMaterialRecyclerView.adapter=adapter
-        binding.SavedMaterialRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.SavedMaterialRecyclerView.layoutManager = GridLayoutManager(this,2)
 
     }
     }
